@@ -3,16 +3,16 @@ import json
 import os
 import pathlib
 import re
-import requests
 import subprocess
 from os import path
 from typing import Dict
 
+import requests
 from rich.console import Console
 
 from dbt_coves.tasks.base import BaseConfiguredTask
 from dbt_coves.utils import shell
-from dbt_coves.utils.airbyte_api import AirbyteApiCaller, AirbyteApiCallerException
+from dbt_coves.utils.airbyte import AirbyteApiCaller, AirbyteApiCallerException
 
 console = Console()
 

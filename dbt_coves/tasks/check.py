@@ -2,7 +2,8 @@ import questionary
 from rich.console import Console
 
 from dbt_coves.tasks.fix import fix
-from dbt_coves.utils.shell import run as shell_run, run_and_capture
+from dbt_coves.utils.shell import run as shell_run
+from dbt_coves.utils.shell import run_and_capture
 
 from .base import BaseConfiguredTask
 

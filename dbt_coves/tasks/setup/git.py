@@ -7,6 +7,7 @@ from rich.console import Console
 
 from dbt_coves.tasks.base import NonDbtBaseTask
 from dbt_coves.utils.shell import run, run_and_capture
+
 from .utils import print_row
 
 console = Console()

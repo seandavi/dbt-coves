@@ -1,13 +1,13 @@
 import os
-import questionary
-
 from pathlib import Path
+
+import questionary
 from rich.console import Console
 
 from dbt_coves.tasks.base import NonDbtBaseTask
 from dbt_coves.utils.shell import shell_run
-from .utils import print_row
 
+from .utils import print_row
 
 console = Console()
 

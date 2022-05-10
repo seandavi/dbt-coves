@@ -1,8 +1,8 @@
 """Contains yaml related utils which might get used in places."""
 
+from functools import lru_cache, wraps
 from pathlib import Path
 from typing import Any, Dict
-from functools import lru_cache, wraps
 
 from ruamel.yaml import YAML
 
@@ -50,13 +50,13 @@ class YamlHandler:
         """Save the YAML file handled by this class"""
         save_yaml(self.path)
 
-    def getter(self, value: str):
-        """Use this to wrap a function turning it into a value getter.
+    def prop(self, value: str):
+        """Use this to wrap a function turning it into a prop getter.
 
         Example:
 
-            @y.getter("config.tool.name")
-            def config_name():  pass
+            @y.prop("config.tool.name")
+            def config_name(): pass
 
         """
 

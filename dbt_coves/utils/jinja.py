@@ -1,14 +1,15 @@
-from jinja2 import (
-    ChoiceLoader,
-    Environment,
-    FileSystemLoader,
-    PackageLoader,
-)
+from pathlib import Path
+from typing import Any, Dict, Union
+
+from jinja2 import ChoiceLoader, Environment, FileSystemLoader, PackageLoader
 
 
 def render_template_file(
-    name, context, output_path, templates_folder=".dbt_coves/templates"
-):
+    name,
+    context: Dict[str, Any],
+    output_path: Union[str, Path],
+    templates_folder: str = ".dbt_coves/templates",
+) -> str:
     env = Environment(
         loader=ChoiceLoader(
             [FileSystemLoader(templates_folder), PackageLoader("dbt_coves")]
@@ -24,6 +25,5 @@ def render_template_file(
     return output
 
 
-def render_template(template_content, context):
-    template = Environment().from_string(template_content)
-    return template.render(**context)
+def render_template(template_content: str, context: Dict[str, Any]):
+    return Environment().from_string(template_content).render(**context)

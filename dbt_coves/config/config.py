@@ -1,7 +1,8 @@
 """Holds config for dbt-coves."""
 
+import os
 from pathlib import Path
-from typing import List, Optional
+from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel
 
@@ -184,3 +185,19 @@ class DbtCovesConfig:
                 return None
         else:
             return config_folders[0]
+
+
+def get_config_folder(
+    workspace_path: Optional[Path] = None, mandatory=True
+) -> Optional[Dict[str, Any]]:
+    """The config folder should be inside the dbt project? :thumbs-down:"""
+    if not workspace_path:
+        workspace_path = os.environ.get("WORKSPACE_PATH", Path.cwd())
+
+    for path in workspace_path.rglob("**/.dbt_coves/"):
+        return path
+    else:
+        if mandatory:
+            raise Exception("No .dbt_coves folder found in workspace")
+        else:
+            return None

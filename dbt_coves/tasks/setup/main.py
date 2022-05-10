@@ -1,13 +1,13 @@
 from rich.console import Console
 
+from dbt_coves.tasks.base import NonDbtBaseTask
+
 from .all import SetupAllTask
-from .sqlfluff import SetupSqlfluffTask
-from .pre_commit import SetupPrecommitTask
 from .dbt import SetupDbtTask
+from .pre_commit import SetupPrecommitTask
+from .sqlfluff import SetupSqlfluffTask
 from .ssh import SetupSSHTask
 from .vs_code import SetupVscodeTask
-
-from dbt_coves.tasks.base import NonDbtBaseTask
 
 console = Console()
 

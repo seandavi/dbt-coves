@@ -2,14 +2,15 @@ import os
 from pathlib import Path
 
 from rich.console import Console
+
 from dbt_coves.tasks.base import NonDbtBaseTask
 
-from .ssh import SetupSSHTask
-from .git import SetupGitTask
 from .dbt import SetupDbtTask
-from .vs_code import SetupVscodeTask
-from .sqlfluff import SetupSqlfluffTask
+from .git import SetupGitTask
 from .pre_commit import SetupPrecommitTask
+from .sqlfluff import SetupSqlfluffTask
+from .ssh import SetupSSHTask
+from .vs_code import SetupVscodeTask
 
 console = Console()
 

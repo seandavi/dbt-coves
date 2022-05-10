@@ -1,5 +1,5 @@
-import os
 import glob
+import os
 from pathlib import Path
 
 from rich.console import Console
@@ -7,6 +7,7 @@ from rich.console import Console
 from dbt_coves.config.config import DbtCovesConfig
 from dbt_coves.tasks.base import NonDbtBaseTask
 from dbt_coves.utils.jinja import render_template_file
+
 from .utils import print_row
 
 console = Console()
