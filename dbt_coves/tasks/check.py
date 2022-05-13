@@ -55,18 +55,20 @@ class CheckTask(BaseConfiguredTask):
                 "--output",
                 "path",
             ]
+            changed_models = [
+                change
+                for change in map(
+                    lambda f: f"{self.config.project_root}/{f}",
+                    run_and_capture(dbt_ls).stdout.splitlines(),
+                )
+            ]
+            print(changed_models)
             command = shell_run(
                 [
                     "pre-commit",
                     "run",
                     "--files",
-                    *[
-                        change
-                        for change in map(
-                            lambda f: f"{self.config.project_root}/{f}",
-                            run_and_capture(dbt_ls).stdout.splitlines(),
-                        )
-                    ],
+                    *changed_models,
                 ]
             )
         else:
