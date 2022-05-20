@@ -50,8 +50,6 @@ class CheckTask(BaseConfiguredTask):
                 "logs",
                 "--project-dir",
                 self.config.project_root,
-                "--resource-type",
-                "model",
                 "--output",
                 "path",
             ]
