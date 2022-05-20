@@ -60,15 +60,18 @@ class CheckTask(BaseConfiguredTask):
                     run_and_capture(dbt_ls).stdout.splitlines(),
                 )
             ]
-            print(changed_models)
-            command = shell_run(
-                [
-                    "pre-commit",
-                    "run",
-                    "--files",
-                    *changed_models,
-                ]
-            )
+
+            
+            if changed_models:
+                print(changed_models)
+                command = shell_run(
+                    [
+                        "pre-commit",
+                        "run",
+                        "--files",
+                        *changed_models,
+                    ]
+                )
         else:
             command = shell_run(["pre-commit", "run", "--all-files"])
         if command.returncode != 0:
